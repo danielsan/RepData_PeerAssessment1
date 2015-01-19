@@ -112,7 +112,7 @@ hist(steps_date$steps)
 OR
 
 ```r
-barplot(steps_date$steps, names.arg = steps_date$date, xlab = "date", ylab = "steps")
+barplot(steps_date$steps, names.arg = steps_date$date, xlab = 'date', ylab = 'steps')
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-11-1.png) 
@@ -150,17 +150,17 @@ median(steps_date$steps)
 * Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
 
 ```r
-actdata_na_filled$day <- ifelse(as.POSIXlt(as.Date(actdata_na_filled$date))$wday%%6==0, "weekend", "weekday")
-actdata_na_filled$day <- factor(actdata_na_filled$day, levels = c("weekday","weekend"))
+actdata_na_filled$day <- ifelse(as.POSIXlt(as.Date(actdata_na_filled$date))$wday%%6==0, 'weekend', 'weekday')
+actdata_na_filled$day <- factor(actdata_na_filled$day, levels = c('weekday','weekend'))
 ```
 
 
-* Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). The plot should look something like the following, which was creating using simulated data:
+* Make a panel plot containing a time series plot (i.e. type = 'l') of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). The plot should look something like the following, which was creating using simulated data:
 
 ```r
-plot_data=aggregate(steps ~ interval + day, actdata_na_filled, mean)
+plot_data <- aggregate(steps ~ interval + day, actdata_na_filled, mean)
 library(lattice)
-xyplot(steps~interval|factor(day),data=plot_data,aspect=1/2,type="l")
+xyplot(steps ~ interval | factor(day), data=plot_data, aspect=1/2, type='l')
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-15-1.png) 
